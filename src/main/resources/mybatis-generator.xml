@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- 数据库驱动 -->
+    <context id="DB2tables" targetRuntime="MyBatis3">
+
+        <!-- 去掉生成出来的代码的注解 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://172.30.2.28:3309/zelu_mini_program?serverTimezone=UTC" userId="root" password="PasswordLuzeanquan">
+            <property name="nullCatalogMeansCurrent" value="true" />
+        </jdbcConnection>
+
+        <!--类型解析-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 生成模型的包名和位置 -->
+        <javaModelGenerator targetPackage="com.zelu.miprogram.domain" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <!--从数据库返回的值去除前后空格-->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- 生成映射文件的包名和位置 -->
+        <sqlMapGenerator targetPackage="mappers" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- 生成DAO的包名和位置 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zelu.miprogram.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
+        <table tableName="mini_paper" domainObjectName="MiniPaper" />
+        <table tableName="mini_paper_subject" domainObjectName="MiniPaperSubject" />
+        <table tableName="mini_paper_user" domainObjectName="MiniPaperUser" />
+        <table tableName="mini_permission" domainObjectName="MiniPermission" />
+        <table tableName="mini_role" domainObjectName="MiniRole" />
+        <table tableName="mini_role_permission" domainObjectName="MiniRolePermission" />
+        <table tableName="mini_subject" domainObjectName="MiniSubject" />
+        <table tableName="mini_subject_user" domainObjectName="MiniSubjectUser" />
+        <table tableName="mini_user" domainObjectName="MiniUser" />
+        <table tableName="mini_user_role" domainObjectName="MiniUserRole" />
+
+    </context>
+</generatorConfiguration>

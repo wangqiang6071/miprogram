@@ -1,0 +1,46 @@
+server:
+  port: 8010
+# 应用名称
+spring:
+  application:
+    name: miprogram
+  #redis的配置
+  redis:
+    host: 172.30.2.28
+    password: PasswordLuzeanquan
+    port: 6380
+    database: 14
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      #时间统一返回时间戳
+      write-dates-as-timestamps: true
+  datasource:
+    username: root
+    password: PasswordLuzeanquan
+    url: jdbc:mysql://172.30.2.28:3309/zelu_mini_program?useTimezone=true&serverTimezone=Asia/Shanghai&characterEncoding=UTF-8&autoReconnect=true
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+#mybatis是独立节点，需要单独配置
+mybatis-plus:
+  mapper-locations: classpath:mappers/*.xml
+  type-aliases-package: com.zelu.emailscene.domain
+  configuration:
+    map-underscore-to-camel-case: true
+excel:
+    #export: /Atomatic/java/IntellijiDEA/miprogram/src/main/resources/
+    export: /home/java/excel/
+shiro:
+  password:
+    salt: zSyK5Kp6PZAAjlT+eeNMlg==
+    #加密次数
+    random: 20
+    #账号错误次数
+    times: 10
+    #账号锁定时长(单位:分钟)
+    time: 10
+wx:
+  miniapp:
+    appid: wx9e9c72acec6bc53e
+    secret: b84dbcf118459f51c6db66ac6f470cd8
+    msgDataFormat: JSON
